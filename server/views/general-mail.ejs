@@ -1,0 +1,37 @@
+<html>
+	<head>Dear <%= userName %>,</head>
+    <body>
+            <% if (text1) { %>
+    	<p>
+                <%= text1 %>
+        </p>
+        <% } %>
+        <% if (text2) { %>
+    	<p>
+                <%= text2 %> 
+        </p>
+        <% } %>
+        <% if (text3) { %>
+            <p>
+                    <%= text3 %>
+            </p>
+            <% } %>
+        <% if (link) { %>
+        <a href=<%= link %>><%= linkDescription %></a><br>
+    	<p>
+            If clicking the link doesn&#39;t seem to work, you can copy and paste the link into your browser&#39;s address window, or retype it there.
+        </p>
+        <% } %>
+       
+            <br/>
+        <p>Thanks,</p>
+        <p>Team Video Chat App</p>
+        <!-- <img src=logo> pass http url of your logo -->
+        <hr>
+        <p>
+            <h6> Please do not reply to this email. This is system generated email. Video Chat team is not monitoring and you will not receive a response. If you need further assistance, Please visit <%= hostName %> <h6>
+        </p>
+    </body>
+</html>
+
+

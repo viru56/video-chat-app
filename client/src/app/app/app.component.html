@@ -1,0 +1,12 @@
+<div [class]="'theme-wrapper ' + (theme$ | async)">
+  <mat-sidenav-container>
+    <div class="wrapper">
+      <vca-header></vca-header>
+      <div class="content">
+        <router-outlet #o="outlet"></router-outlet>
+      </div>
+
+      <!-- <vca-footer></vca-footer> -->
+    </div>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,39 @@
+<div class="container accountActivation">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1 class="header">
+        <mat-icon
+          class="logo-icon"
+          aria-hidden="false"
+          aria-label="ondemand-video"
+          >ondemand_video</mat-icon
+        >
+        <span> Video Chat App</span>
+      </h1>
+      <mat-progress-bar
+        *ngIf="submitting"
+        class="progress-bar"
+        mode="indeterminate"
+      ></mat-progress-bar>
+      <mat-card>
+        <mat-card-header class="justify-content-center mb-2">
+          <mat-card-title>Account Activation</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p *ngIf="message">
+            {{ message }} this page is redirect autometically in
+            <b>{{ time }} </b>
+            <a
+              *ngIf="!submitting"
+              routerLink="/login"
+              mat-button
+              colorr="accent"
+              >click here</a
+            >
+          </p>
+          <p class="error">{{ error }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

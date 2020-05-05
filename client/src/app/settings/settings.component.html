@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12"><h1>Settings</h1></div>
+  </div>
+  <br>
+  <ng-container *ngIf="settings$ | async as settings">
+    <div class="row">
+      <div class="col-md-6 group">
+        <div class="icon-form-field">
+          <mat-icon color="accent"><fa-icon icon="paint-brush" color="accent"></fa-icon></mat-icon>
+          <mat-form-field>
+            <mat-select placeholder="Color Theme"
+                        [ngModel]="settings.theme"
+                        (selectionChange)="onThemeSelect($event)"
+                        name="themes">
+              <mat-option *ngFor="let t of themes" [value]="t.value">
+                {{  t.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="icon-form-field">
+          <mat-icon color="accent"><fa-icon icon="lightbulb" color="accent"></fa-icon></mat-icon>
+          <mat-placeholder>Auto night mode (from 21:00 to 7:00)
+          </mat-placeholder>
+          <mat-slide-toggle
+            [checked]="settings.autoNightMode"
+            (change)="onAutoNightModeToggle($event)">
+          </mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

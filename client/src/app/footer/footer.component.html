@@ -1,0 +1,11 @@
+<div class="footer">
+    <div class="row">
+      <div class="col-12 signature">
+        &#169; <span class="year">{{ year }}</span> - {{ appName }}
+        <br class="d-block d-sm-none" />
+        <div class="version">
+          {{ version }} <span *ngIf="!isProd">[{{ envName }}]</span>
+        </div>
+      </div>
+    </div>
+  </div>

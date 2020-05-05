@@ -1,0 +1,44 @@
+@import '~@angular/material/theming';
+
+@mixin vca-app-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  mat-sidenav-container {
+    .footer {
+      color: mat-color($primary, lighter);
+      background-color: mat-color($primary, darker);
+    }
+  }
+
+  .error-notification-overlay {
+    color: mat-color($warn, default-contrast);
+    background-color: mat-color($warn);
+  }
+
+  .info-notification-overlay {
+    color: mat-color($accent, default-contrast);
+    background-color: mat-color($accent);
+  }
+
+  .success-notification-overlay {
+    color: mat-color($success-colors, default-contrast);
+    background-color: mat-color($success-colors);
+  }
+
+  .warning-notification-overlay {
+    color: mat-color($warning-colors, default-contrast);
+    background-color: mat-color($warning-colors);
+  }
+  .error-notification-overlay,
+  .info-notification-overlay,
+  .success-notification-overlay,
+  .warning-notification-overlay {
+    max-width: 320px;
+    min-width: 320px;
+    .mat-simple-snackbar {
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,0 +1,181 @@
+<div class="container register">
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+          <h1 class="header">
+              <mat-icon
+                class="logo-icon"
+                aria-hidden="false"
+                aria-label="ondemand-video"
+                >ondemand_video</mat-icon
+              >
+              <span> Video Chat App</span>
+            </h1>
+        <mat-progress-bar *ngIf="submitting" class="progress-bar" mode="indeterminate"></mat-progress-bar>
+        <mat-card>
+          <mat-card-header class="justify-content-center mb-2">
+            <mat-card-title>Create a new account</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <mat-form-field class="col-md-6" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <input
+                  matInput
+                  placeholder="Enter your First Name "
+                  formControlName="firstName"
+                  type="text"
+                  maxlength="100"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('firstName').hasError('required')"
+                >
+                  First Name is required
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-6" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <mat-icon matSuffix>account_circle</mat-icon>
+                <input
+                  matInput
+                  placeholder="Enter your Last Name "
+                  formControlName="lastName"
+                  type="text"
+                  maxlength="100"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('lastName').hasError('required')"
+                >
+                  Last Name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="col" appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <mat-icon matSuffix>email</mat-icon>
+                <input
+                  matInput
+                  placeholder="Enter your email "
+                  formControlName="email"
+                  type="email"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('email').hasError('required')"
+                >
+                  E-mail is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    registerForm.get('email').hasError('email') ||
+                    registerForm.get('email').hasError('pattern')
+                  "
+                >
+                  E-mail should be valid
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field class="col-md-6" appearance="outline">
+                <mat-label>Password</mat-label>
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hidePassword = !hidePassword"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hidePassword"
+                  type="button"
+                >
+                  <mat-icon>{{
+                    hidePassword ? 'visibility_off' : 'visibility'
+                  }}</mat-icon>
+                </button>
+                <input
+                  matInput
+                  placeholder="Enter your password"
+                  formControlName="password"
+                  [type]="hidePassword ? 'password' : 'text'"
+                  maxlength="24"
+                  minlength="6"
+                />
+                <mat-error
+                  *ngIf="registerForm.get('password').hasError('required')"
+                >
+                  Password is required
+                </mat-error>
+                <mat-error
+                  *ngIf="registerForm.get('password').hasError('minlength')"
+                >
+                  Password length should be greater than 6
+                </mat-error>
+                <mat-error
+                  *ngIf="registerForm.get('password').hasError('maxlength')"
+                >
+                  Password length should not be greater than 24
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="col-md-6" appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hidePassword = !hidePassword"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hidePassword"
+                  type="button"
+                >
+                  <mat-icon>{{
+                    hidePassword ? 'visibility_off' : 'visibility'
+                  }}</mat-icon>
+                </button>
+                <input
+                  matInput
+                  placeholder="Confirm your password"
+                  formControlName="confirmPassword"
+                  [type]="hidePassword ? 'password' : 'text'"
+                />
+                <mat-error
+                  *ngIf="
+                    registerForm.get('confirmPassword').hasError('required')
+                  "
+                >
+                  Confirm Password is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                    registerForm.get('confirmPassword').hasError('mustMatch')
+                  "
+                >
+                  Password did not match
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <p class="error">{{error}}</p>
+          </mat-card-content>
+          <mat-card-actions
+            class="d-flex justify-content-center align-items-center flex-column"
+          >
+            <button
+              mat-raised-button
+              type="submit"
+              color="primary"
+              class="btn-submit mb-3"
+              [disabled]="registerForm.invalid || submitting"
+            >
+              Sign Up
+            </button>
+            <p>
+              Already have an account?<a
+                mat-button
+                color="accent"
+                routerLink="/login"
+                >Log In</a
+              >
+            </p>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </form>
+</div>

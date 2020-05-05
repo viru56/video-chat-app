@@ -1,0 +1,49 @@
+.toolbar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  z-index: 10;
+  .signup-btn {
+    border: 1px solid;
+  }
+  .user {
+    text-transform: uppercase;
+    border: 1px solid;
+  }
+  fa-icon {
+    font-size: 24px;
+  }
+  .branding {
+    display: flex;
+    cursor: pointer;
+    overflow: hidden;
+    padding-top: 4px;
+    text-overflow: ellipsis;
+
+    &.center {
+      text-align: center;
+    }
+    .logo-icon {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+    .title {
+      padding-left: 10px;
+    }
+  }
+
+  .mat-stroked-button {
+    margin-right: 10px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  mat-select {
+    margin: 0 0 0 20px;
+    width: 40px;
+    font-size: 14px;
+  }
+}

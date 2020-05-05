@@ -1,0 +1,5 @@
+$vca-primary: mat-palette($mat-indigo, 800, 300, 900);
+$vca-accent: mat-palette($mat-light-blue);
+$vca-warn: mat-palette($mat-pink, 600);
+
+$vca-theme: mat-light-theme($vca-primary, $vca-accent, $vca-warn);

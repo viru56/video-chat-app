@@ -1,0 +1,19 @@
+@import '.~@angular/material/theming';
+
+@mixin vca-styles-reset-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+  .error {
+    color: mat-color($warn);
+    text-align: center;
+  }
+  a {
+    color: mat-color($foreground, text);
+
+    &:hover {
+      color: mat-color($accent);
+    }
+  }
+}
