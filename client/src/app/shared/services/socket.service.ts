@@ -17,8 +17,8 @@ export class SocketService {
       this.socket = io(env.base_url);
     }
   }
-  listen(eventName: string): Observable<void> {
-    let observable = new Observable<void>(observer => {
+  listen(eventName: string): Observable<any> {
+    let observable = new Observable<any>(observer => {
       this.socket.on(eventName, data => {
         observer.next(data);
       });

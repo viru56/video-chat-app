@@ -1,0 +1,67 @@
+.chat {
+  height: 100%;
+  .main {
+    height: 100%;
+  }
+  .users {
+    padding: 0;
+    border-right: 1px solid #ccc;
+    .header {
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #ccc;
+    }
+    .list {
+      list-style: none;
+      padding: 0;
+      .user {
+        padding: 10px;
+        display: flex;
+        cursor: pointer;
+        .logo {
+          min-width: 50px;
+          margin-top: 10px;
+          margin-right: 10px;
+          .name {
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 1.2rem;
+            background-color: #bbdefb;
+            text-transform: uppercase;
+            .mat-badge-content {
+              right: 0;
+              bottom: 0;
+              width: 12px;
+              height: 12px;
+              line-height: 12px;
+            }
+          }
+        }
+        .spacer {
+          flex: 1 1 auto;
+        }
+        .info {
+          .name {
+            margin-bottom: 0;
+            text-transform: capitalize;
+          }
+          .message {
+            margin-bottom: 0;
+            font-size: 0.8rem;
+            font-weight: 300;
+          }
+        }
+        .time {
+          display: flex;
+          align-items: flex-end;
+          font-size: 0.8rem;
+        }
+      }
+      .user:hover {
+        background: #eceff1;
+      }
+    }
+  }
+}

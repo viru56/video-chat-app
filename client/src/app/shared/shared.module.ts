@@ -22,6 +22,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatBadgeModule} from '@angular/material/badge';
+
 import { SocketService, UserService } from './services';
 import {
   FontAwesomeModule,
@@ -47,6 +49,7 @@ import {
   faBook
 } from '@fortawesome/free-solid-svg-icons';
 import { faMediumM, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { LimitToPipe } from './pipes/limit-to.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -69,9 +72,11 @@ import { faMediumM, faGithub } from '@fortawesome/free-brands-svg-icons';
     MatDividerModule,
     MatDialogModule,
     MatProgressBarModule,
+    MatBadgeModule,
+
     FontAwesomeModule
   ],
-  declarations: [],
+  declarations: [LimitToPipe],
   exports: [
     CommonModule,
     FormsModule,
@@ -97,7 +102,11 @@ import { faMediumM, faGithub } from '@fortawesome/free-brands-svg-icons';
     MatNativeDateModule,
     MatDialogModule,
     MatProgressBarModule,
-    FontAwesomeModule
+    MatBadgeModule,
+
+    FontAwesomeModule,
+    
+    LimitToPipe
   ],
   providers: [SocketService, UserService]
 })

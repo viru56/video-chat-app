@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Iuser } from '../models/user.model';
 import { environment as env } from 'environments/environment';
@@ -13,7 +12,6 @@ import { authUser, authLogout } from 'app/core/auth/auth.actions';
 export class UserService {
   constructor(
     private apiService: ApiService,
-    private cookieService: CookieService,
     private router: Router,
     private store: Store
   ) {}
@@ -23,7 +21,6 @@ export class UserService {
         .post(`${env.base_url}user/login`, body)
         .toPromise()
         .then(data => {
-          // this.cookieService.set('authorization', data.token);
           this.store.dispatch(
             authLogin({
               isAuthenticated: true,
@@ -83,7 +80,6 @@ export class UserService {
           resolve(user);
         })
         .catch(err => {
-          console.log(err);
           reject(err);
           this.store.dispatch(authLogout());
         });

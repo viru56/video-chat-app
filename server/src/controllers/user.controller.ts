@@ -127,6 +127,16 @@ export class UserController {
         { email: req.body.email, isDeleted: false },
         { firstName: 1, lastName: 1, email: 1, password: 1, status: 1 }
       );
+      if (!user) {
+        logger.error(
+          "falied to user login, reason:- email does not esists ",
+          req.body.email
+        );
+        return res.status(400).json({
+          message:
+            "The email address that you've entered doesn't match any account."
+        });
+      }
       if (user.status !== "active") {
         logger.error("user account inactive");
         return res.status(400).json({
@@ -147,7 +157,11 @@ export class UserController {
           role: user.role
         });
         logger.log("token generated");
-        return res.status(200).json({ token, user: parseUser(user) });
+        res.status(200).json({ token, user: parseUser(user) });
+        await User.updateOne(
+          { _id: user.id },
+          { lastLoggedIn: new Date(), isLoggedIn: true }
+        );
       }
     } catch (error) {
       console.log(error);
@@ -293,6 +307,55 @@ export class UserController {
         message:
           "The email address that you've entered doesn't match any account."
       });
+    }
+  }
+}
+
+export class SocketUserControoker {
+  public static async updateUser(query: any, body: any) {
+    try {
+      await User.updateOne(query, body);
+      return "success";
+    } catch (error) {
+      return "fail";
+    }
+  }
+  public static async findUsers(query?: any) {
+    try {
+      const users = await User.find(
+        { ...query, isDeleted: false },
+        {
+          firstName: 1,
+          lastName: 1,
+          email: 1,
+          lastLoggedIn: 1,
+          loginStatus: 1,
+          isLoggedIn: 1,
+          socketId: 1
+        }
+      );
+      return users;
+    } catch (error) {
+      console.log(error);
+      return [];
+    }
+  }
+  public static async findUser(userId: string) {
+    try {
+      return await User.findOne(
+        { _id: userId },
+        {
+          firstName: 1,
+          lastName: 1,
+          email: 1,
+          lastLoggedIn: 1,
+          loginStatus: 1,
+          isLoggedIn: 1,
+          socketId: 1
+        }
+      );
+    } catch (error) {
+      return "fail";
     }
   }
 }

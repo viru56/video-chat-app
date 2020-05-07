@@ -24,3 +24,30 @@ p {
     border-bottom: 3px solid;
   }
 }
+
+.available {
+  .mat-badge-content {
+    background: #00c853 !important;
+    color: #00c853 !important;
+  }
+}
+.busy,
+.do-not-disturb,
+.meeting {
+  .mat-badge-content {
+    background: #d50000 !important;
+    color: #d50000 !important;
+  }
+}
+.away {
+  .mat-badge-content {
+    background: #ffd600 !important;
+    color: #ffd600 !important;
+  }
+}
+.offline {
+  .mat-badge-content {
+    background: #607d8b !important;
+    color: #607d8b !important;
+  }
+}

@@ -3,7 +3,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from 'app/core/core.module';
 import { UserService } from 'app/shared';
-
 @Component({
   selector: 'vca-register',
   templateUrl: './register.component.html',

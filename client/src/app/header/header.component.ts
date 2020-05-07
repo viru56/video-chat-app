@@ -36,9 +36,13 @@ export class HeaderComponent implements OnInit {
     this.isHome = false;
     this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
     this.store.pipe(select(selectUser)).subscribe(async user => {
-      this.user = user
-        ? user
-        : this.localStorage.checkAuth() && (await this.userService.getUser());
+      try {
+        this.user = user
+          ? user
+          : this.localStorage.checkAuth() && (await this.userService.getUser());
+      } catch (error) {
+        this.onLogoutClick();
+      }
     });
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

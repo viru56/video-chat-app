@@ -49,6 +49,20 @@ const UserSchema = new Schema(
       enum: ["admin", "user"],
       default: "user"
     },
+    loginStatus: {
+      type: String,
+      enum: [
+        "available",
+        "busy",
+        "do-not-disturb",
+        "away",
+        "meeting",
+        "offline"
+      ]
+    },
+    isLoggedIn: Boolean,
+    lastLoggedIn: Date,
+    socketId:String,
     createdAt: {
       type: Date,
       default: Date.now

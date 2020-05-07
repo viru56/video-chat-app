@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '',
     pathMatch: 'full',
-    data: { title: 'Home' }
+    data: { title: 'Home' },
   },
   {
     path: 'settings',
