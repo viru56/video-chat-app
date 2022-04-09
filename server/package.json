@@ -26,7 +26,7 @@
     "express": "^4.17.1",
     "googleapis": "^49.0.0",
     "jsonwebtoken": "^8.4.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongoose": "^5.4.10",
     "nodemailer": "^5.1.1",
     "socket.io": "^2.3.0",
